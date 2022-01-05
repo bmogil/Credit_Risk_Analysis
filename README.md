@@ -53,7 +53,6 @@
 
 **Balanced Accuracy Score (BAS)**
 
-
 ![](Images/sm_1.png)
 
 
@@ -68,7 +67,10 @@
 * The, "ClusterCentroids" (CC) sampling algorithm does this by implementing a technique very similar to SMOTE, except with undersampling. So, the CC algorithm identifies           clusters of the majority class. Then, it generates new synthetic datapoints--called centroids-- that are representative of the clusters, and will replace these clusters. Once   this is done, the majority class is undersampled down to the size of the minority class.
 
 **BAS**
+
 ![](Images/cc_1.png)
+
+
 * The CC algorithm gives us our lowest BAS thus far, coming in at only approx. 54%.
 
 **ICR**
