@@ -17,30 +17,30 @@
 ![](Images/rs_1.png)
 * As shown above, I begin by importing the dependency necessary to perform the RandomOverSampling technique. Then, I instantiate a RandomOverSampler object and establish a         random_state parameter of 1 for consistency across all models. Finally, I perform the RandomOverSampling technique on our training set to handle the large class imbalance       present in our dataset, (large majority in favour of low risk of loan default vs. opposite) and display the results by using the 'Counter' method on the 'y_resampled' variable   and printing that result and the 'y_train' distribution (old distribution) using the same method, and I also did a little formatting for aesthetics. As evidenced by the 'New     Distribution' results, the class imbalance no longer exists and the frequency of the former minority class now equals the frequency of the former majority class in the           dataset.
 
-**Step 2: Perform Logistic Regression and Make Predictions**
+##### **Step 2: Perform Logistic Regression and Make Predictions**
 ![](Images/rs_2.png)
 *  The above image displays that I begin this step by importing the dependency necessary to perform logistic regression.
 *  Next, I instantiate a LogisticRegression object and specify two parameters. 
 *  Then, I use the now RandomlyOverSampled data to train the model.
 *  Lastly, I use the logistic regression model that I just trained using the RandomlyOverSampled data to predict the tagret variable for all of the features in the 'X_test'        dataset.
 
-**Step 3: Create DF to Hold Model's Prediction Results**
+##### **Step 3: Create DF to Hold Model's Prediction Results**
 ![](Images/rs_3.png)
 *  Here, I simply create a DataFrame and specify each column name and its values using Python dictionary syntax (curly braces with k:v pairs).
 *  Then, I display the first 10 results held in this DF.
 
-**Step 4: Balanced Accuracy Score**
+##### **Step 4: Balanced Accuracy Score**
 ![](Images/rs_4.png)
 *  Above, the model's balanced accuracy score (BAS) is determined by calculating the percentage of predictions made by the model that turned out to be correct. 
 *  As you can see, this model's BAS is approx. 66%.
 
-**Step 5: Confusion Matrix**
+##### **Step 5: Confusion Matrix**
 [](Images/rs_5.png)
 *  A confusion matrix is generated and displayed. 
 *  A confusion matrix holds columns of, "Predicted True" and, "Predicted False". Followed by row indexes of, "Actually True" and, "Actually False". 
 *  As seen via my confusion matrix above, the number of true predictions (high risk) the model made, which actually turned out to be true totals only 72. Further, the number of    false predictions made by the model that actually were false is much higher at 10,292. This makes sense because the RandomOverSampling technique simply takes some existing      datapoints from the minority class and duplicates them until the classes are equal in size. Although this should be better than not doing so, the result is logical because      the "high risk" class is significantly outnumbered by the "low risk" class. Therefore, there is more distinct data for the logistic regression model to base its linear model    off of for this class, resulting in more accuracy for this class.
 
-**Step 6: Imbalanced Classification Report**
+##### **Step 6: Imbalanced Classification Report**
 ![](Images/rs_6.png)
 *  An imbalanced classification report (ICR) is created and displayed which shows the accuracy, precision, f1, etc. scores for each class, as predicted by the model. 
 *  The results from the above ICR indicate that of the total number of features predicted to be a high credit risk, only 1% of them were actually deemed a high credit risk in      reality. Further, the recall (sensitivity) results for the same class show that out of all the features that were actually deemed a high credit risk in reality, the model        managed to capture 71% of them. In this situation it is important to note that this result can be misleading because the 71% is indicating that there weren't many false          negatives, which makes sense because 100% of the model's "low risk" class predictions turned out to be accurate. In other words, the 71% is misleading because it means the      model managed to correctly identify/predict 71% of the total results that were actually high risk in reality, however, since the precision is so low, this signals that          despite this 71%, the model is not a good one because the 71% of total actual positives the model identified constitute only 1% of the model's actually true predictions.        Therefore, for every correct actual positive prediction the model made, there was 71x the amount of positive predictions that turned out to be false. This potential              misconception is very noticeable via the model's f1 score for the high risk class. Now, when you look at the low risk class, the precision is 100%, which is good. However,      this too can be a tad deceiving because the model's recall score for this class is only 60%, meaning only 60% of the total features that were low risk in reality were            identified as low risk by the model. 
@@ -120,9 +120,4 @@
 * Unsurprisingly, the AdaBoost model displays highs across all categories of the ICR.
 ---
 ## Summary
-* In summary, our observations suggest that the AdaBoost model is by far and away the optimal machine learning model for Fast Lending to decrease their loan default rates and     thereby, based on the observations and insights above, I highly recommend Fast Lending employ this model in their attempt to decrease their loan default rates and provide a     quicker and more reliable loan experience to their customers.  
-    
-
-
-
-
+* In summary, our observations suggest that the AdaBoost model is by far and away the optimal machine learning model for Fast Lending to decrease their loan default rates and     thereby, based on the observations and insights above, I highly recommend Fast Lending employ this model in their attempt to decrease their loan default rates and provide a     quicker and more reliable loan experience to their customers.
