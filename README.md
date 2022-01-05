@@ -55,11 +55,12 @@
 
 ![](Images/sm_1.png)
 
-
 * As you can see, although SMOTE's BAS is minutely better than the one provided via RandomOverSampling, it still approximates only 66%.
 
 **Imbalanced Classification Report (ICR)** 
+
 ![](Images/sm_2.png)
+
 * The above ICR is identical to the one calculated from the RandomOverSampler technique and therefore, the same analysis applies.
 ---
 #### Third Model: Undersampling - The ClusterCentroids Algorithm
@@ -70,11 +71,12 @@
 
 ![](Images/cc_1.png)
 
-
 * The CC algorithm gives us our lowest BAS thus far, coming in at only approx. 54%.
 
 **ICR**
+
 ![](Images/cc_2.png)
+
 * Compared to the two ICR's generated from the two oversampling techniques discussed above, the CC algorithm displays lower precision and recall metrics for the "high risk"       class than them. 
 * And although the precision metric for the "low risk" class is the same, at 100%, the recall for this class is also worse than the two previous models.
 * Overall, the CC undersampling algorithm seems to be the worst fit for our data thus far.
@@ -85,11 +87,15 @@
 * Then, SMOTEENN cleans the resulting data with the following undersampling strategy: If the two nearest neighbours of a datapoint belong to a different class than this           datapoint, that datapoint is dropped.
 
 **BAS**
+
 ![](Images/smtn_1.png)
+
 * The SMOTEEN combination sampling technique provided a BAS of approx. 62%. 
 
 **ICR**
+
 ![](Images/smtn_2.png)
+
 * The SMOTEENN ICR displays an identical true positive precision score to all three prior models.
 * Further, it shows a slightly higher positive (high risk) recall than the CC model, yet a lower positive recall than both of the oversampling technniques (RandomOverSampling     and SMOTE).
 ---
@@ -101,11 +107,15 @@
 * The logic behind this persists that by combining these small trees (weak learners)--whose output can only be deemed slightly better than a random guess (slightly better than     the natural average) since each model is based on a small, randomly sampled portion of the original data--we can create a a strong learner with much better decision making       power.
 
 **BAS**
+
 ![](Images/rf_1.png)
+
 * The BRFC's BAS is approx. 79% making it the highest one yet.
 
 **ICR**
+
 ![](Images/rf_2.png)
+
 * The BRFC's ICR indicates an increase in both precision and recall for the high risk class when compared to all other models evaluated thus far.
 ---
 #### Sixth Model: Ensemble Algorithm - Easy Ensemble AdaBoost Classifier
@@ -118,11 +128,15 @@
 ![](Images/ada.png)
 
 **BAS**
+
 ![](Images/ada_1.png)
+
 * The BAS of this model is approx. 93% making it by far the highest BAS amongst the other five models above.
 
 **ICR**
+
 ![](Images/ada_2.png)
+
 * Unsurprisingly, the AdaBoost model displays highs across all categories of the ICR.
 ---
 ## Summary
