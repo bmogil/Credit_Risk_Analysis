@@ -51,6 +51,7 @@
 #### *Second Model: OverSampling - SMOTE*
 * "Synthetic Minority Oversampling Technique", or SMOTE for short, is another oversampling technique aimed at solving the problem presented by signifcant class imbalance. 
 * SMOTE differs from RandomOverSampling because instead of copying existing datapoints from the minority class, SMOTE selects a number of datapoints from the minority class, and   will interpolate new, synthetic datapoints based on each of neighbour's values. The following image displays the concept: 
+
 ![](Images/sm_ex.png)
 
 **Balanced Accuracy Score (BAS)**
