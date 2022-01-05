@@ -53,6 +53,8 @@
 
 **Balanced Accuracy Score (BAS)**
 ![](Images/sm_1.png)
+
+
 * As you can see, although SMOTE's BAS is minutely better than the one provided via RandomOverSampling, it still approximates only 66%.
 
 **Imbalanced Classification Report (ICR)** 
