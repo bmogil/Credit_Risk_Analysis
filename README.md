@@ -10,7 +10,7 @@
 * After the above analysis was completed, it was determined that the optimal machine learning algorithm for this instance was the Easy Ensemble AdaBoost Classifier. 
 ---
 ## Results
-#### First Model: Oversampling - RandomOverSampler
+#### *First Model: Oversampling - RandomOverSampler*
 * In describing the results of the first sampling technique I used--Random OverSampling-- I will detail each step of the process. I will only be doing this for this model because the others all follow a similar pattern, so only the actual results will be analyzed for them. 
 
 ##### **Step 1: Import Dependency, Instantiate a RandomOverSampler Object, Perform OverSampling/Display Results**
@@ -47,7 +47,7 @@
 *  In my opinion, the more important metric for this model, given the context/purpose of the situation, (accurately identifying good loan candidates) is the sensitivity or          recall metric for the "high risk" class because the lower this is, the more high risk candidates there are that the ML model is not identifying and actually classifying as      "low risk" candidates. 
 *  Further, although precision is important, I believe Fast Lending would rather identify some good candiates as bad, opposed to classifying some bad candidates as good            because the latter would surely increase their default rates rather than achieve the goal of this project--decreasing their default rates. In other words, it is better to        risk an increase of false positives (ML model predicts high risk when in reality they are low risk) to likely increase the percentage of total true negatives predicted by the    model because if a loan applicant is classified as high risk, but in reality they are not, it is easy to reapply and request a human-review of their application. However, if    we were to prioritize the model's high risk class precision and risk the respective recall, (have more actual high risk applicants classified as low risk --> but have more      precision amongst the model's predicted positives) it seems logical that Fast Lending's default rates would increase, rather than the desired maximum decrease.
 ---
-#### Second Model: OverSampling - SMOTE
+#### *Second Model: OverSampling - SMOTE*
 * "Synthetic Minority Oversampling Technique", or SMOTE for short, is another oversampling technique aimed at solving the problem presented by signifcant class imbalance. 
 * SMOTE differs from RandomOverSampling because instead of copying existing datapoints from the minority class, SMOTE selects a number of datapoints from the minority class, and   will interpolate new, synthetic datapoints based on each of neighbour's values.
 
@@ -56,12 +56,13 @@
 ![](Images/sm_1.png)
 * As you can see, although SMOTE's BAS is minutely better than the one provided via RandomOverSampling, it still approximates only 66%.
 
+
 **Imbalanced Classification Report (ICR)** 
 
 ![](Images/sm_2.png)
 * The above ICR is identical to the one calculated from the RandomOverSampler technique and therefore, the same analysis applies.
 ---
-#### Third Model: Undersampling - The ClusterCentroids Algorithm
+#### *Third Model: Undersampling - The ClusterCentroids Algorithm*
 * Undersampling is the exact opposite of oversampling. Instead of increasing the size of the minority class to equal that of the majority class, the majority class is decreased   to equal the size of the minority class.
 * The, "ClusterCentroids" (CC) sampling algorithm does this by implementing a technique very similar to SMOTE, except with undersampling. So, the CC algorithm identifies           clusters of the majority class. Then, it generates new synthetic datapoints--called centroids-- that are representative of the clusters, and will replace these clusters. Once   this is done, the majority class is undersampled down to the size of the minority class.
 
@@ -70,6 +71,7 @@
 ![](Images/cc_1.png)
 * The CC algorithm gives us our lowest BAS thus far, coming in at only approx. 54%.
 
+
 **ICR**
 ![](Images/cc_2.png)
 
@@ -77,7 +79,7 @@
 * And although the precision metric for the "low risk" class is the same, at 100%, the recall for this class is also worse than the two previous models.
 * Overall, the CC undersampling algorithm seems to be the worst fit for our data thus far.
 ---
-#### Fourth Model: Combination Sampling - SMOTEENN
+#### *Fourth Model: Combination Sampling - SMOTEENN*
 * One way to address the con(s) presented by oversampling and undersampling techniques is to use a sampling strategy that is a combination of oversampling and undersampling:       SMOTEENN.
 * SMOTEENN first uses the SMOTE oversampling technique to oversample the minority class.
 * Then, SMOTEENN cleans the resulting data with the following undersampling strategy: If the two nearest neighbours of a datapoint belong to a different class than this           datapoint, that datapoint is dropped.
@@ -87,13 +89,14 @@
 ![](Images/smtn_1.png)
 * The SMOTEEN combination sampling technique provided a BAS of approx. 62%. 
 
+
 **ICR**
 ![](Images/smtn_2.png)
 
 * The SMOTEENN ICR displays an identical true positive precision score to all three prior models.
 * Further, it shows a slightly higher positive (high risk) recall than the CC model, yet a lower positive recall than both of the oversampling technniques (RandomOverSampling     and SMOTE).
 ---
-#### Fifth Model: Ensemble Algorithm - Balanced Random Forest Classifier
+#### *Fifth Model: Ensemble Algorithm - Balanced Random Forest Classifier*
 * In an effort to improve the model's performance, I employed two ensemble learning algorithms. The first one is the Balanced Random Forest Classifier (BRFC).
 * Ensemble learning is based on the idea that two is better than one. The concept of ensemble learning is the process of combining multiple models to help improve the accuracy     and robustness, as well as decrease variance of the model. Thereby, increasing the overall performance of the model.
 * For example, what we're doing here is employing several smaller and more simple decision trees (vs. one single complex tree) using the the Random Forest algorithm.
@@ -105,12 +108,13 @@
 ![](Images/rf_1.png)
 * The BRFC's BAS is approx. 79% making it the highest one yet.
 
+
 **ICR**
 
 ![](Images/rf_2.png)
 * The BRFC's ICR indicates an increase in both precision and recall for the high risk class when compared to all other models evaluated thus far.
 ---
-#### Sixth Model: Ensemble Algorithm - Easy Ensemble AdaBoost Classifier
+#### *Sixth Model: Ensemble Algorithm - Easy Ensemble AdaBoost Classifier*
 * Instead of the bootstrap aggregation, (an ensemble learning technique used within the Random Forest algorithm) this model uses 'boosting'
 * Bootstrap aggregation (AKA 'bagging') has two parts:
     * 1. Bootstrapping - A sampling technique with which a number of samples are made, and in which an observation can occur multiple times
@@ -123,6 +127,7 @@
 
 ![](Images/ada_1.png)
 * The BAS of this model is approx. 93% making it by far the highest BAS amongst the other five models above.
+
 
 **ICR**
 
