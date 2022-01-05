@@ -52,6 +52,8 @@
 * SMOTE differs from RandomOverSampling because instead of copying existing datapoints from the minority class, SMOTE selects a number of datapoints from the minority class, and   will interpolate new, synthetic datapoints based on each of neighbour's values.
 
 **Balanced Accuracy Score (BAS)**
+
+
 ![](Images/sm_1.png)
 
 
