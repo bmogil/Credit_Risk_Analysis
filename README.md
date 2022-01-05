@@ -13,7 +13,7 @@
 #### First Model: Oversampling - RandomOverSampler
 * In describing the results of the first sampling technique I used--Random OverSampling-- I will detail each step of the process. I will only be doing this for this model because the others all follow a similar pattern, so only the actual results will be analyzed for them. 
 
-**Step 1: Import Dependency, Instantiate a RandomOverSampler Object, Perform OverSampling/Display Results**
+##### **Step 1: Import Dependency, Instantiate a RandomOverSampler Object, Perform OverSampling/Display Results**
 ![](Images/rs_1.png)
 * As shown above, I begin by importing the dependency necessary to perform the RandomOverSampling technique. Then, I instantiate a RandomOverSampler object and establish a         random_state parameter of 1 for consistency across all models. Finally, I perform the RandomOverSampling technique on our training set to handle the large class imbalance       present in our dataset, (large majority in favour of low risk of loan default vs. opposite) and display the results by using the 'Counter' method on the 'y_resampled' variable   and printing that result and the 'y_train' distribution (old distribution) using the same method, and I also did a little formatting for aesthetics. As evidenced by the 'New     Distribution' results, the class imbalance no longer exists and the frequency of the former minority class now equals the frequency of the former majority class in the           dataset.
 
